@@ -5,12 +5,11 @@
       :rail="rail"
       permanent
       elevation="10"
-      app
       @click="rail = false"
   >
     <v-btn
-        fixed
-        right
+
+
         elevation="10"
         top
         height="28"
@@ -39,26 +38,32 @@
     <v-divider></v-divider>
 
     <v-list density="compact" nav>
-      <v-list-item prepend-icon="mdi-home-city" :title="t('sidebar.dashboard')" value="home"></v-list-item>
-      <v-list-item prepend-icon="mdi-account" :title="t('sidebar.weather')" value="account"></v-list-item>
-      <v-list-item prepend-icon="mdi-account-group-outline" :title="todo" value="users"></v-list-item>
-      <v-list-item prepend-icon="mdi-account-group-outline" :title="profile" value="users"></v-list-item>
+      <v-list-item prepend-icon="mdi-view-dashboard" value="dashboard">
+        <h1 style="font-size:18px">{{ t('sidebar.dashboard') }}</h1>
+      </v-list-item>
+      <v-list-item prepend-icon="mdi-weather-snowy-rainy" value="weather">
+        <h1 style="font-size:18px">{{ t('sidebar.weather') }}</h1>
+      </v-list-item>
+      <v-list-item prepend-icon="mdi-book-open-page-variant" value="todo">
+        <h1 style="font-size:18px">{{ t('sidebar.todo') }}</h1>
+      </v-list-item>
+      <v-list-item href="/profile" prepend-icon="mdi-face" value="profile">
+        <h1 style="font-size:18px">{{ t('sidebar.profile') }}</h1>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
   <!--      <v-main style="height: 250px"></v-main>-->
 
 </template>
 
-<script setup >
+<script setup>
 import {ref} from "vue";
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+import {useI18n} from 'vue-i18n'
+
+const {t} = useI18n()
 
 const drawer = ref(true)
 const rial = ref(true)
-// const dashboard = t('sidebar.dashboard')
-const weather = t('sidebar.weather')
-const profile = t('sidebar.profile')
-const todo= t('sidebar.todo')
+
 
 </script>

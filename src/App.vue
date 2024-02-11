@@ -1,18 +1,35 @@
 <template>
   <v-app>
+    <app-bar v-if="showAppBar"/>
     <h1>{{ message }}</h1>
 
     <v-main>
-      <router-view />
+      <router-view/>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n'
+import AppBar from "@/components/appBar/AppBar.vue";
+import {useI18n} from 'vue-i18n';
+import {useRouter} from 'vue-router';
+import {ref} from 'vue';
 
-const { t } = useI18n()
-const message = t('welcome') // Assuming 'account_is_not_exist' is the correct key in your translations
+const {t} = useI18n();
+const router = useRouter();
+const message = t('welcome');
+const showAppBar = ref(true);
+
+router.beforeEach((to, from, next) => {
+
+  if (to.path === '/') {
+    showAppBar.value = false;
+
+  } else {
+    showAppBar.value = true;
+  }
+  next();
+})
 </script>
 
 <style>
