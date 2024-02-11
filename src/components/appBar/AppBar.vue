@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar :elevation="2">
+    <v-app-bar height="80" :elevation="2">
       <template v-slot:prepend>
         <img  style="width: 50px" src="../../assets/img/logo-nodin.png">
       </template>
