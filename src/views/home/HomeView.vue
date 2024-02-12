@@ -2,7 +2,7 @@
 <v-container class="fill-height">
   <v-row justify="center" align="center">
     <v-card
-        class="mx-auto b-r"
+        class="mx-auto b-r br"
         width="50%"
         height="600"
         elevation="15"

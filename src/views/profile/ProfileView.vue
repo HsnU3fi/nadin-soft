@@ -2,7 +2,8 @@
     <v-container class="fill-height">
       <v-row justify="center" align="center">
         <v-card
-            class="mx-auto pa-12 pb-8 b-r"
+
+            class="mx-auto pa-12 pb-8 b-r br"
             width="50%"
             height="600"
             elevation="15"
@@ -45,7 +46,7 @@
             </div>
           </v-row>
           <v-row justify="center">
-            <v-btn elevation="5" style="margin-top: 50px" width="150" height="50" color="#4ED1F1" rounded>
+            <v-btn elevation="5" style="margin-top: 50px" width="150" height="50" color="#4ED1F1" class="b-r">
               <h1 style="font-size: 15px;">
                 Save
               </h1>
