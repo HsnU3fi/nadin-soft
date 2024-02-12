@@ -1,8 +1,6 @@
 <template>
   <v-app>
     <side-bar v-if="showAppBar"/>
-    <h1>{{ message }}</h1>
-
     <v-main>
       <router-view/>
     </v-main>
