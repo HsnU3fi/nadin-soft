@@ -12,6 +12,7 @@
           <v-row justify="center">
             <div style="width: 400px">
               <v-text-field
+                  color="#4ED1F1"
                   prepend-inner-icon="mdi-account"
                   class="m-t"
                   clearable
@@ -21,7 +22,36 @@
 
             </div>
 
+
             </v-row>
+          <v-row justify="center">
+            <div style="width: 200px;padding-right: 10px">
+              <v-autocomplete
+                  color="#4ED1F1"
+                  label="Locale"
+                  :items="['En','Fa']"
+                  variant="outlined"
+              ></v-autocomplete>
+
+            </div>
+            <div style="width: 200px;padding-left: 10px">
+              <v-autocomplete
+                  color="#4ED1F1"
+                  label="Theme"
+                  :items="['Dark', 'Light']"
+                  variant="outlined"
+              ></v-autocomplete>
+
+            </div>
+          </v-row>
+          <v-row justify="center">
+            <v-btn elevation="5" style="margin-top: 50px" width="150" height="50" color="#4ED1F1" rounded>
+              <h1 style="font-size: 15px;">
+                Save
+              </h1>
+            </v-btn>
+
+          </v-row>
         </v-card>
       </v-row>
     </v-container>
