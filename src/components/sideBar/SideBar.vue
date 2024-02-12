@@ -1,39 +1,21 @@
 <template>
+  <v-app-bar height="80" :elevation="2">
 
+    <template v-slot:prepend>
+      <v-app-bar-nav-icon size="50" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+    </template>
+
+    <v-row justify="center">
+      <img  style="width: 250px;" src="../../assets/img/nodin.png">
+
+    </v-row>
+  </v-app-bar>
   <v-navigation-drawer
       v-model="drawer"
       :rail="rail"
-      permanent
       elevation="10"
       @click="rail = false"
   >
-    <v-btn
-
-
-        elevation="10"
-        top
-        height="28"
-        width="28"
-        color="#494B50"
-        fab
-        @click="rail = !rail"
-        :style="{ top: '30px', transform: 'translate(95%, -50%)' }"
-    >
-      <v-icon size="25" color="#FFF">{{
-          mini ? "mdi-chevron-right" : "mdi-chevron-left"
-        }}
-      </v-icon>
-    </v-btn>
-    <v-list-item>
-      <template v-slot:append>
-        <v-btn
-            style="position: absolute;z-index: 2"
-            variant="text"
-            icon="mdi-chevron-left"
-            @click.stop="rail = !rail"
-        ></v-btn>
-      </template>
-    </v-list-item>
 
     <v-divider></v-divider>
 
@@ -52,6 +34,7 @@
             {{ t('sidebar.dashboard') }}
           </h1>
       </v-list-item>
+      <v-divider></v-divider>
 
       <v-list-item href="/weather"  value="weather">
         <img
@@ -66,6 +49,8 @@
     margin-top: -35px;
 };">{{ t('sidebar.weather') }}</h1>
       </v-list-item>
+      <v-divider></v-divider>
+
       <v-list-item href="/todo" value="todo">
         <img
             src="../../assets/img/todo-icon.png"
@@ -77,8 +62,11 @@
         <h1 style="    font-size: 18px;
     margin-left: 50px;
     margin-top: -35px;
-};">{{ t('sidebar.todo') }}</h1>
+};">
+          {{ t('sidebar.todo') }}</h1>
       </v-list-item>
+      <v-divider></v-divider>
+
       <v-list-item href="/profile"  value="profile">
         <img
             src="../../assets/img/profile-icon.png"
@@ -93,6 +81,8 @@
 };">{{ t('sidebar.profile') }}</h1>
       </v-list-item>
     </v-list>
+    <v-divider></v-divider>
+
   </v-navigation-drawer>
   <!--      <v-main style="height: 250px"></v-main>-->
 

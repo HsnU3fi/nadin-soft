@@ -3,19 +3,22 @@
   <v-row justify="center" align="center">
     <v-card
         class="mx-auto b-r br"
-        width="50%"
+        width="70%"
         height="600"
         elevation="15"
-        color="#000"
         variant="outlined"
     >
      <v-row justify="center" align="center">
 
-       <h1 class="m-t">
-         <h1 >{{ getHours }} :{{getMinutes}}:{{getSeconds}}</h1>
-         {{message}}, User
-       </h1>
+       <div style="padding: 10px" class="m-t">
+         <h1 style="font-size: 8vw" >{{ getHours }} :{{getMinutes}}:{{getSeconds}}</h1>
+         <v-row justify="center">
+           <h1 style="font-size: 20px;margin-top: 50px">
+             {{message}}, User
+           </h1>
+         </v-row>
 
+       </div>
      </v-row>
     </v-card>
   </v-row>

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-bar v-if="showAppBar"/>
+    <side-bar v-if="showAppBar"/>
     <h1>{{ message }}</h1>
 
     <v-main>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import AppBar from "@/components/appBar/AppBar.vue";
+import SideBar from "@/components/sideBar/SideBar.vue";
 import {useI18n} from 'vue-i18n';
 import {useRouter} from 'vue-router';
 import {ref} from 'vue';

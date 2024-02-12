@@ -2,8 +2,9 @@
   <v-container class="fill-height">
     <v-row justify="center" align="center">
       <v-card
+          style="  overflow: scroll;"
           class="mx-auto b-r br"
-          width="50%"
+          width="70%"
           height="600"
           elevation="15"
           color="#000"
@@ -12,6 +13,7 @@
 
 
           <v-data-table
+              height="600"
               :headers="headers"
               :items="desserts"
           >

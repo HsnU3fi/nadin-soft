@@ -4,14 +4,14 @@
         <v-card
 
             class="mx-auto pa-12 pb-8 b-r br"
-            width="50%"
+            width="70%"
             height="600"
             elevation="15"
             color="#000"
             variant="outlined"
         >
           <v-row justify="center">
-            <div style="width: 400px">
+            <div style="width: 350px">
               <v-text-field
                   color="#4ED1F1"
                   prepend-inner-icon="mdi-account"
@@ -26,7 +26,7 @@
 
             </v-row>
           <v-row justify="center">
-            <div style="width: 200px;padding-right: 10px">
+            <div style="width: 180px;padding: 10px">
               <v-autocomplete
                   color="#4ED1F1"
                   label="Locale"
@@ -35,7 +35,7 @@
               ></v-autocomplete>
 
             </div>
-            <div style="width: 200px;padding-left: 10px">
+            <div style="width: 180px;padding: 10px">
               <v-autocomplete
                   color="#4ED1F1"
                   label="Theme"
