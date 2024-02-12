@@ -18,7 +18,7 @@
                 class="m-t"
                 clearable
                 v-model="name"
-                label="Name"
+                :label="t('profile.name')"
                 variant="outlined"
             ></v-text-field>
 
@@ -30,9 +30,9 @@
           <div style="width: 180px;padding: 10px">
             <v-autocomplete
                 color="#4ED1F1"
-                label="Locale"
+                :label="t('profile.locale')"
                 v-model="locale"
-                :items="['En','Fa']"
+                :items="['en','fa']"
                 variant="outlined"
             ></v-autocomplete>
 
@@ -40,9 +40,9 @@
           <div style="width: 180px;padding: 10px">
             <v-autocomplete
                 color="#4ED1F1"
-                label="Theme"
+                :label="t('profile.theme')"
                 v-model="theme"
-                :items="['Dark', 'Light']"
+                :items="['dark', 'light']"
                 variant="outlined"
             ></v-autocomplete>
 
@@ -52,7 +52,7 @@
           <v-btn @click="saveInLocalStorage" elevation="5" style="margin-top: 50px" width="150" height="50"
                  color="#4ED1F1" class="b-r">
             <h1 style="font-size: 15px;">
-              Save
+              {{t('profile.save')}}
             </h1>
           </v-btn>
 
@@ -67,9 +67,10 @@
 
 <script setup>
 import {ref} from 'vue'
+import {useI18n} from 'vue-i18n'
+const {t} = useI18n()
 import {useProfileStore} from "../../stores/profile";
 import Loading from "@/components/loading/Loading.vue";
-
 const profileStore = useProfileStore();
 const getItem = ref({})
 const locale = ref('')
@@ -78,7 +79,6 @@ const name = ref('')
 const loading = ref(true)
 const getItemLocalStorage = async () => {
   getItem.value = await JSON.parse(profileStore.getItems())
-
   locale.value = getItem.value[0].locale
   theme.value = getItem.value[0].theme
   name.value = getItem.value[0].name
@@ -97,11 +97,11 @@ const saveInLocalStorage = async () => {
     }
   ]
   await profileStore.saveInLocalStorage(items)
+  location.reload();
   setTimeout(() => {
     loading.value = false
   }, 3000)
 }
-
 getItemLocalStorage()
 </script>
 

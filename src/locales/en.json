@@ -6,5 +6,19 @@
     "weather": "weather",
     "todo": "todo",
     "profile": "profile"
-  }
+  },
+  "profile": {
+    "name": "Name",
+    "locale": "Language",
+    "Theme": "theme",
+    "save": "save"
+  },
+  "home": {
+    "gn": "Good night",
+    "ga": "Good afternoon",
+    "gm": "Good morning"
+  },
+  "weather": {
+    "city": "Enter City"
+    }
 }

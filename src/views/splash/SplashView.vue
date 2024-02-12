@@ -15,8 +15,8 @@
 const goToHomePage = () => {
   const items = [
     {
-      locale: "En",
-      theme: 'Light',
+      locale: "en",
+      theme: 'light',
       name: 'User'
     }
   ]
@@ -33,8 +33,4 @@ setTimeout(() => {
 
 <style scoped>
 
-.bg {
-  background: rgb(234, 253, 254);
-  background: linear-gradient(188deg, rgba(234, 253, 254, 1) 40%, rgba(255, 255, 255, 1) 56%, rgba(246, 218, 254, 1) 84%);
-}
 </style>

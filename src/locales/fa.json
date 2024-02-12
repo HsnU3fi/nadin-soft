@@ -1,4 +1,24 @@
 {
-  "welcome": "زیاس",
-  "language": "eزیسزشn"
+  "welcome": "Welcome",
+  "language": "en",
+  "sidebar": {
+    "dashboard":"داشبورد",
+    "weather": "آب و هوا",
+    "todo": "کارها",
+    "profile": "پروفایل"
+  },
+  "profile": {
+    "name": "نام",
+    "locale": "زبان",
+    "theme": "پوسته",
+    "save": "ثبت"
+  },
+  "home": {
+    "gn": "شب بخیر",
+    "ga": "ظهر بخیر",
+    "gm": "صبح بخیر"
+  },
+  "weather": {
+    "city": "انتخاب شهر"
+  }
 }

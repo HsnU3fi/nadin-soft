@@ -219,19 +219,17 @@ const save = () => {
     }
   }else {
     loading.value = true;
-    const data = JSON.parse(todoStore.getTodos()) || []; // Parse existing data or initialize empty array
-    const editedItemIndex = editedIndex.value /* Logic to determine the index of the item you want to edit */;
+    const data = JSON.parse(todoStore.getTodos()) || [];
+    const editedItemIndex = editedIndex.value
     if (editedItemIndex !== -1) {
-      // If the item exists in the data array
-      data[editedItemIndex].todo = todo.value; // Update the todo property of the item
-      todoStore.saveTodoInLocalStorage(data); // Save the updated data to local storage
+      data[editedItemIndex].todo = todo.value;
+      todoStore.saveTodoInLocalStorage(data);
       initialize();
       dialog.value = false;
       setTimeout(() => {
         loading.value = false;
       }, 3000);
     } else {
-      // Handle case where the item to edit is not found
       console.error("Item to edit not found");
     }
   }

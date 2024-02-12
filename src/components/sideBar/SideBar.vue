@@ -1,13 +1,10 @@
 <template>
   <v-app-bar height="80" :elevation="2">
-
     <template v-slot:prepend>
       <v-app-bar-nav-icon size="50" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </template>
-
     <v-row justify="center">
-      <img  style="width: 250px;" src="../../assets/img/nodin.png">
-
+      <img  class="img-size" src="../../assets/img/nodin.png">
     </v-row>
   </v-app-bar>
   <v-navigation-drawer
@@ -16,9 +13,7 @@
       elevation="10"
       @click="rail = false"
   >
-
     <v-divider></v-divider>
-
     <v-list density="compact" nav>
       <v-list-item height="50" href="/dashboard" value="dashboard">
           <img
@@ -27,10 +22,7 @@
               width="35"
               height="35"
           >
-          <h1 style="    font-size: 18px;
-    margin-left: 50px;
-    margin-top: -35px;
-};">
+          <h1 class="list-item">
             {{ t('sidebar.dashboard') }}
           </h1>
       </v-list-item>
@@ -44,10 +36,8 @@
             height="40"
             style="margin-left: -8px"
         >
-        <h1 style="    font-size: 18px;
-    margin-left: 50px;
-    margin-top: -35px;
-};">{{ t('sidebar.weather') }}</h1>
+        <h1 class="list-item">
+          {{ t('sidebar.weather') }}</h1>
       </v-list-item>
       <v-divider></v-divider>
 
@@ -57,12 +47,8 @@
             alt="Dashboard Icon"
             width="40"
             height="40"
-
         >
-        <h1 style="    font-size: 18px;
-    margin-left: 50px;
-    margin-top: -35px;
-};">
+        <h1 class="list-item">
           {{ t('sidebar.todo') }}</h1>
       </v-list-item>
       <v-divider></v-divider>
@@ -73,29 +59,29 @@
             alt="Dashboard Icon"
             width="35"
             height="35"
-
         >
-        <h1 style="    font-size: 18px;
-    margin-left: 50px;
-    margin-top: -35px;
-};">{{ t('sidebar.profile') }}</h1>
+        <h1 class="list-item">
+          {{ t('sidebar.profile') }}</h1>
       </v-list-item>
     </v-list>
     <v-divider></v-divider>
-
   </v-navigation-drawer>
-  <!--      <v-main style="height: 250px"></v-main>-->
 
 </template>
 
 <script setup>
 import {ref} from "vue";
 import {useI18n} from 'vue-i18n'
-
 const {t} = useI18n()
-
 const drawer = ref(true)
 const rial = ref(true)
-
-
 </script>
+<style lang="scss">
+.img-size{
+  width: 250px
+}
+.list-item{
+  font-size: 18px;margin-left: 50px;margin-top: -35px;
+}
+
+</style>

@@ -1,17 +1,13 @@
 <template>
-  <v-overlay  style="width: 100%" v-model="value" class="align-center justify-center" contained>
-    <img style="width: 150px;margin-bottom: 50px" src="../../assets/img/logo-nodin.png">
-
+  <v-overlay  v-model="value" class="align-center justify-center" contained>
+    <img class="img" src="../../assets/img/logo-nodin.png">
     <v-row justify="center" align="center">
       <div class="loader"></div>
-
     </v-row>
-
   </v-overlay>
-
 </template>
 
-<script>
+<script >
 import {defineComponent} from 'vue';
 
 export default defineComponent({
@@ -22,7 +18,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="scss">
 .loader {
   width: 100px;
   aspect-ratio: 8/5;
@@ -72,7 +68,9 @@ export default defineComponent({
     background-position: 0% 0%, 100% 100%;
   }
 }
-
+.img{
+  width: 150px;margin-bottom: 50px
+}
 body {
   margin: 0;
 }

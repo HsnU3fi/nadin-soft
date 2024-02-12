@@ -12,7 +12,7 @@
         <v-row justify="center">
         <div style="width: 50%;margin-top: 50px">
         <v-autocomplete
-            label="Enter City"
+            :label="t('weather.city')"
             color="#4ED1F1"
             variant="outlined"
             :items="cityList"
@@ -21,8 +21,6 @@
             v-model="selectedCity"
         >
           <template v-slot:append>
-
-
               <img
                   style="cursor: pointer"
                   height="48"
@@ -62,6 +60,8 @@
 
 <script setup>
 import Loading from "@/components/loading/Loading.vue";
+import {useI18n} from 'vue-i18n'
+const {t} = useI18n()
 import {useWeatherStore} from "../../stores/weather";
 import {ref} from "vue";
 const loading = ref(true)
@@ -100,5 +100,4 @@ setTimeout(() => {
 </script>
 
 <style scoped>
-/* Add your scoped styles here if needed */
 </style>
