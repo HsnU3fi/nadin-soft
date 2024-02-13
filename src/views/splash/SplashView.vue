@@ -12,6 +12,7 @@
 </template>
 
 <script setup>
+//======================================================================================================================
 const goToHomePage = () => {
   const items = [
     {
@@ -24,7 +25,7 @@ const goToHomePage = () => {
   localStorage.setItem("todo", JSON.stringify([]));
   window.location = '/dashboard'
 }
-
+//======================================================================================================================
 setTimeout(() => {
   goToHomePage()
 }, 4000)

@@ -8,9 +8,7 @@ import vueI18n from '@intlify/vite-plugin-vue-i18n';
 export default defineConfig({
   plugins: [
     vue(),
-    vuetify({
-      rtl: true,
-    }),
+    vuetify(),
     vueI18n({})
   ],
   resolve: {

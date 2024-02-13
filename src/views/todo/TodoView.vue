@@ -126,11 +126,11 @@
   </v-container>
 </template>
 <script setup>
+//======================================================================================================================
 import {ref, watch} from 'vue';
 import {useTodoStore} from "../../stores/todo";
 import {useI18n} from 'vue-i18n'
 import {useProfileStore} from "../../stores/profile";
-
 const {t} = useI18n()
 const todoStore = useTodoStore();
 const dialog = ref(false);
@@ -140,11 +140,12 @@ const formTitle = ref('New Item');
 const dialogDelete = ref(false);
 const profileStore = useProfileStore();
 const dir = ref('ltr')
+//======================================================================================================================
 const getDir = async ()=>{
   dir.value = await profileStore.Rtl()
 }
 getDir();
-
+//======================================================================================================================
 const headers = [
   {
     title: t('todo.headerTodo'),
@@ -158,20 +159,20 @@ const desserts = ref([]);
 const editedIndex = ref(-1);
 const editedItem = ref({
   todo: '',
-
 });
 const defaultItem = {
   todo: '',
-
 };
+//======================================================================================================================
 const changTitle = (title) => {
   formTitle.value = title
 }
+//======================================================================================================================
 const initialize =  () => {
-  const data = JSON.parse(todoStore.getTodos())
+  const data = JSON.parse(todoStore.getTodos()) || []
   desserts.value = data
 };
-
+//======================================================================================================================
 const editItem = (item) => {
   changTitle(t('todo.editItem'))
   editedIndex.value = desserts.value.indexOf(item);
@@ -179,13 +180,13 @@ const editItem = (item) => {
   todo.value = item.todo
   dialog.value = true;
 };
-
+//======================================================================================================================
 const deleteItem = (item) => {
   editedIndex.value = desserts.value.indexOf(item);
   editedItem.value = {...item};
   dialogDelete.value = true;
 };
-
+//======================================================================================================================
 const deleteItemConfirm = () => {
   desserts.value.splice(editedIndex.value, 1);
   const storedDesserts = JSON.parse(localStorage.getItem("todo"));
@@ -195,23 +196,21 @@ const deleteItemConfirm = () => {
   }
   closeDelete();
 };
-
+//======================================================================================================================
 const close = () => {
   dialog.value = false;
   editedItem.value = {...defaultItem};
   editedIndex.value = -1;
 };
-
+//======================================================================================================================
 const closeDelete = () => {
   dialogDelete.value = false;
   editedItem.value = {...defaultItem};
   editedIndex.value = -1;
 };
-
+//======================================================================================================================
 const save = () => {
   if (formTitle.value === t('todo.newItem')) {
-
-
     loading.value = true
     const data = JSON.parse(todoStore.getTodos())
     if (data) {
@@ -251,18 +250,16 @@ const save = () => {
     }
   }
 };
-
+//======================================================================================================================
 watch(dialog, (val) => {
   val || close();
 });
-
+//======================================================================================================================
 watch(dialogDelete, (val) => {
   val || closeDelete();
 });
-
+//======================================================================================================================
 initialize();
-
-
 setTimeout(() => {
   loading.value = false
 }, 3000)

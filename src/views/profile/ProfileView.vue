@@ -68,6 +68,7 @@
 </template>
 
 <script setup>
+//======================================================================================================================
 import {ref} from 'vue'
 import {useI18n} from 'vue-i18n'
 
@@ -82,17 +83,25 @@ const theme = ref('')
 const name = ref('')
 const dir = ref('ltr')
 const loading = ref(true)
-const getItemLocalStorage = async () => {
-  dir.value = await profileStore.Rtl()
-  getItem.value = await JSON.parse(profileStore.getItems())
-  locale.value = getItem.value[0].locale
-  theme.value = getItem.value[0].theme
-  name.value = getItem.value[0].name
-  setTimeout(() => {
-    loading.value = false
-  }, 3000)
+const getDir = async () => {
+  dir.value = await profileStore.Rtl() || 'rtl'
 }
-
+getDir();
+const getItemLocalStorage = async () => {
+  try {
+    getItem.value = await JSON.parse(profileStore.getItems())
+    locale.value = getItem.value[0].locale
+    theme.value = getItem.value[0].theme
+    name.value = getItem.value[0].name
+    setTimeout(() => {
+      loading.value = false
+    }, 3000)
+  } catch (err) {
+    setTimeout(() => {
+      loading.value = false
+    }, 3000)}
+}
+//======================================================================================================================
 const saveInLocalStorage = async () => {
   loading.value = true
   var items = [
@@ -104,9 +113,7 @@ const saveInLocalStorage = async () => {
   ]
   await profileStore.saveInLocalStorage(items)
   location.reload();
-  setTimeout(() => {
-    loading.value = false
-  }, 3000)
+
 }
 getItemLocalStorage()
 </script>

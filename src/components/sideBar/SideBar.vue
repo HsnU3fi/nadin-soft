@@ -87,10 +87,10 @@
 </template>
 
 <script setup>
+//======================================================================================================================
 import {ref} from "vue";
 import {useI18n} from 'vue-i18n'
 import {useProfileStore} from "../../stores/profile";
-
 const selectItem = ref(1);
 const {t} = useI18n()
 const drawer = ref(true)
@@ -98,6 +98,7 @@ const rial = ref(true)
 const profileStore = useProfileStore();
 const dir = ref('ltr')
 const location = ref('left')
+//======================================================================================================================
 const getDir = async () => {
   dir.value = await profileStore.Rtl()
   if (dir.value === 'rtl') {

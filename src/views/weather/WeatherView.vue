@@ -58,6 +58,7 @@
 </template>
 
 <script setup>
+//======================================================================================================================
 import Loading from "@/components/loading/Loading.vue";
 import {useI18n} from 'vue-i18n'
 const {t} = useI18n()
@@ -71,9 +72,8 @@ const c = ref('');
 const city = ref();
 const dayOfWeek = ref();
 const weatherStore = useWeatherStore();
-
 cityList.value = weatherStore.listCity();
-
+//======================================================================================================================
 const getObj = async () => {
   loading.value=true
   for (var i in cityList.value) {
@@ -84,7 +84,6 @@ const getObj = async () => {
       c.value = result.data.current_weather_units.temperature
       temperature.value = result.data.current_weather.temperature
       city.value = cityList.value[i].city
-
     }
 
   }
@@ -92,7 +91,7 @@ const getObj = async () => {
     loading.value = false
   }, 3000)
 }
-
+//======================================================================================================================
 setTimeout(() => {
   loading.value = false
 }, 3000)

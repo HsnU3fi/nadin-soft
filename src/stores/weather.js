@@ -4,6 +4,7 @@ import axios from 'axios';
 export const useWeatherStore = defineStore('weatherStore', {
 
     actions: {
+//======================================================================================================================
         async getWeather(item) {
             try {
                 const response = await axios.get('https://api.open-meteo.com/v1/forecast?latitude=' + item.lat + '&longitude=' + item.lng + '&current_weather=true');
@@ -12,7 +13,7 @@ export const useWeatherStore = defineStore('weatherStore', {
                 return error.error;
             }
         },
-
+//======================================================================================================================
         listCity() {
             const list =
                 [

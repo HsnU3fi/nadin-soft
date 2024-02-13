@@ -27,6 +27,7 @@
   </v-container>
 </template>
 <script setup>
+//======================================================================================================================
 import Loading from "@/components/loading/Loading.vue";
 import {useI18n} from 'vue-i18n'
 const {t} = useI18n()
@@ -40,27 +41,28 @@ const loading = ref(true)
 const profileStore = useProfileStore();
 const dir = ref('ltr')
 const getDir = async ()=>{
-  dir.value = await profileStore.Rtl()
+  dir.value = await profileStore.Rtl() || 'rtl'
 }
 getDir();
-
-
+//======================================================================================================================
 setInterval(() => {
   time.value = new Date()
 }, 1000)
-
+//======================================================================================================================
 const getSeconds = computed(() =>
     time.value.getSeconds().toString().padStart(2, '0'),
 )
+//======================================================================================================================
 const getMinutes = computed(() =>
     time.value.getMinutes().toString().padStart(2, '0'),
 )
+//======================================================================================================================
 const getHours = computed(() =>
     time.value.getHours().toString().padStart(2, '0'),
 )
+//======================================================================================================================
 const showMessage = () => {
   const hour = parseInt(getHours.value)
-
   if (hour < 6) {
     message.value = t('home.gn')
   } else if (hour < 12) {
@@ -69,10 +71,10 @@ const showMessage = () => {
     message.value = t('home.ga')
   } else if (hour > 18 < 24) {
     message.value = t('home.gn')
-
   }
 }
-name.value = JSON.parse(localStorage.getItem('profile'))
+//======================================================================================================================
+name.value = JSON.parse(localStorage.getItem('profile')) || "User"
 showMessage()
 setTimeout(() => {
   loading.value = false

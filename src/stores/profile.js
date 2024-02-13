@@ -7,6 +7,7 @@ export const useProfileStore = defineStore('profileStore', {
         saveInLocalStorage(items){
             localStorage.setItem("profile", JSON.stringify(items));
         },
+//======================================================================================================================
         getItems(){
             try {
                 const r = localStorage.getItem("profile");
@@ -18,6 +19,7 @@ export const useProfileStore = defineStore('profileStore', {
                 return error;
             }
         },
+//======================================================================================================================
         Rtl(){
             const getItem=this.getItems()
             const locale =JSON.parse(getItem)
