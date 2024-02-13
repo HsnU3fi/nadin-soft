@@ -7,12 +7,12 @@
           width="70%"
           height="600"
           elevation="15"
-          color="#000"
           variant="outlined"
       >
 
 
         <v-data-table
+            :dir="dir"
             height="600"
             :headers="headers"
             :items="desserts"
@@ -21,7 +21,7 @@
             <v-toolbar
                 flat
             >
-              <v-toolbar-title>Todo List</v-toolbar-title>
+              <v-toolbar-title>{{ t('todo.todoList') }}</v-toolbar-title>
 
               <v-spacer></v-spacer>
               <v-dialog
@@ -34,16 +34,17 @@
                       dark
                       class="mb-2"
                       v-bind="props"
-                      @click="changTitle('New Item')"
+                      @click="changTitle(t('todo.formTitle'))"
                   >
                     <h1 style="font-size: 15px">
-                      New Item
+                      {{ t('todo.newItem') }}
                     </h1>
                   </v-btn>
                 </template>
                 <v-card>
-                  <v-card-title>
-                    <span class="text-h5">{{ formTitle }}</span>
+                  <v-card-title :dir="dir">
+                    <span
+                          class="text-h5">{{ formTitle }}</span>
                   </v-card-title>
 
                   <v-card-text>
@@ -51,16 +52,17 @@
                       <v-row>
 
                         <v-textarea
+                            :dir="dir"
                             v-model="todo"
                             variant="outlined"
-                            label="todo"
+                            :label="t('todo.todo')"
                         ></v-textarea>
 
                       </v-row>
                     </v-container>
                   </v-card-text>
 
-                  <v-card-actions>
+                  <v-card-actions :dir="dir">
                     <v-spacer></v-spacer>
                     <v-btn
                         color="#4ED1F1"
@@ -68,31 +70,36 @@
                         @click="close"
                     >
                       <h1 style="font-size: 15px">
-                        Cancel
+                        {{ t('todo.todoCancel') }}
                       </h1>
                     </v-btn>
                     <v-btn
+
                         color="#4ED1F1"
                         variant="text"
                         @click="save"
                     >
-                      <h1 style="font-size: 15px">
-                        Save
+                      <h1  style="font-size: 15px">
+                        {{ t('todo.todoSave') }}
+
                       </h1>
                     </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-dialog>
-              <v-dialog v-model="dialogDelete" max-width="500">
+              <v-dialog
+                        v-model="dialogDelete" max-width="500">
                 <v-card class="b-r">
-                  <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+                  <v-card-title :dir="dir"
+                                class="text-h5">{{ t('todo.textDelete') }}
+                  </v-card-title>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="#4ED1F1" variant="text" @click="closeDelete"><h1 style="font-size: 15px">
-                      Cancel
+                    <v-btn  color="#4ED1F1" variant="text" @click="closeDelete"><h1 style="font-size: 15px">
+                      {{ t('todo.todoCancel') }}
                     </h1></v-btn>
                     <v-btn color="#4ED1F1" variant="text" @click="deleteItemConfirm"><h1 style="font-size: 15px">
-                      Delete
+                      {{ t('todo.todoSave') }}
                     </h1></v-btn>
                     <v-spacer></v-spacer>
                   </v-card-actions>
@@ -121,21 +128,31 @@
 <script setup>
 import {ref, watch} from 'vue';
 import {useTodoStore} from "../../stores/todo";
+import {useI18n} from 'vue-i18n'
+import {useProfileStore} from "../../stores/profile";
 
+const {t} = useI18n()
 const todoStore = useTodoStore();
 const dialog = ref(false);
 const loading = ref(true);
 const todo = ref('');
 const formTitle = ref('New Item');
 const dialogDelete = ref(false);
+const profileStore = useProfileStore();
+const dir = ref('ltr')
+const getDir = async ()=>{
+  dir.value = await profileStore.Rtl()
+}
+getDir();
+
 const headers = [
   {
-    title: 'Todo',
+    title: t('todo.headerTodo'),
     align: 'start',
     sortable: false,
     key: 'todo',
   },
-  {title: 'Actions', key: 'actions', sortable: false, align: 'end'},
+  {title: t('todo.headerActions'), key: 'actions', sortable: false, align: 'end'},
 ];
 const desserts = ref([]);
 const editedIndex = ref(-1);
@@ -147,19 +164,19 @@ const defaultItem = {
   todo: '',
 
 };
-const changTitle=(title)=>{
+const changTitle = (title) => {
   formTitle.value = title
 }
-const initialize = () => {
+const initialize =  () => {
   const data = JSON.parse(todoStore.getTodos())
   desserts.value = data
 };
 
 const editItem = (item) => {
-  changTitle('Edit Item')
+  changTitle(t('todo.editItem'))
   editedIndex.value = desserts.value.indexOf(item);
   editedItem.value = {...item};
-  todo.value=item.todo
+  todo.value = item.todo
   dialog.value = true;
 };
 
@@ -192,7 +209,7 @@ const closeDelete = () => {
 };
 
 const save = () => {
-  if(formTitle.value==="New Item") {
+  if (formTitle.value === t('todo.newItem')) {
 
 
     loading.value = true
@@ -217,7 +234,7 @@ const save = () => {
         loading.value = false
       }, 3000)
     }
-  }else {
+  } else {
     loading.value = true;
     const data = JSON.parse(todoStore.getTodos()) || [];
     const editedItemIndex = editedIndex.value

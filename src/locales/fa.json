@@ -20,5 +20,17 @@
   },
   "weather": {
     "city": "انتخاب شهر"
+  },
+  "todo": {
+    "editItem": "ویرایش",
+    "newItem": "افزودن",
+    "formTitle": "افزودن",
+    "todoList": "لیست کارها",
+    "todo": "کارها ",
+    "todoCancel": "لغو",
+    "todoSave": "تایید",
+    "textDelete": "آیا مطمين هستید که این آیتم حذف شود؟",
+    "headerActions": "حذف/ویرایش",
+    "headerTodo": "کارها"
   }
 }

@@ -13,7 +13,7 @@
           <div  class="m-t p-10">
             <h1 class="font1">{{ getHours }} :{{ getMinutes }}:{{ getSeconds }}</h1>
             <v-row justify="center">
-              <h1 class="font2">
+              <h1 :dir="dir" class="font2">
                 {{ message }}, {{ name[0].name }}
               </h1>
             </v-row>
@@ -31,11 +31,18 @@ import Loading from "@/components/loading/Loading.vue";
 import {useI18n} from 'vue-i18n'
 const {t} = useI18n()
 import {computed, ref} from 'vue'
+import {useProfileStore} from "../../stores/profile";
 const date = new Date();
 const time = ref(new Date())
 const message = ref('')
 const name = ref('')
 const loading = ref(true)
+const profileStore = useProfileStore();
+const dir = ref('ltr')
+const getDir = async ()=>{
+  dir.value = await profileStore.Rtl()
+}
+getDir();
 
 
 setInterval(() => {

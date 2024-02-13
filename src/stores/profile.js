@@ -2,6 +2,7 @@ import {defineStore} from 'pinia'
 
 
 export const useProfileStore = defineStore('profileStore', {
+
     actions: {
         saveInLocalStorage(items){
             localStorage.setItem("profile", JSON.stringify(items));
@@ -15,6 +16,15 @@ export const useProfileStore = defineStore('profileStore', {
                 return r;
             } catch (error) {
                 return error;
+            }
+        },
+        Rtl(){
+            const getItem=this.getItems()
+            const locale =JSON.parse(getItem)
+            if(locale[0].locale === 'fa'){
+                return 'rtl'
+            }else {
+                return 'ltr'
             }
         }
     }

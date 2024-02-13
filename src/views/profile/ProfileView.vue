@@ -7,12 +7,12 @@
           width="70%"
           height="600"
           elevation="15"
-          color="#000"
           variant="outlined"
       >
         <v-row justify="center">
           <div style="width: 350px">
             <v-text-field
+                :dir="dir"
                 color="#4ED1F1"
                 prepend-inner-icon="mdi-account"
                 class="m-t"
@@ -29,6 +29,7 @@
         <v-row justify="center">
           <div style="width: 180px;padding: 10px">
             <v-autocomplete
+                :dir="dir"
                 color="#4ED1F1"
                 :label="t('profile.locale')"
                 v-model="locale"
@@ -39,6 +40,7 @@
           </div>
           <div style="width: 180px;padding: 10px">
             <v-autocomplete
+                :dir="dir"
                 color="#4ED1F1"
                 :label="t('profile.theme')"
                 v-model="theme"
@@ -52,7 +54,7 @@
           <v-btn @click="saveInLocalStorage" elevation="5" style="margin-top: 50px" width="150" height="50"
                  color="#4ED1F1" class="b-r">
             <h1 style="font-size: 15px;">
-              {{t('profile.save')}}
+              {{ t('profile.save') }}
             </h1>
           </v-btn>
 
@@ -68,16 +70,20 @@
 <script setup>
 import {ref} from 'vue'
 import {useI18n} from 'vue-i18n'
+
 const {t} = useI18n()
 import {useProfileStore} from "../../stores/profile";
 import Loading from "@/components/loading/Loading.vue";
+
 const profileStore = useProfileStore();
 const getItem = ref({})
 const locale = ref('')
 const theme = ref('')
 const name = ref('')
+const dir = ref('ltr')
 const loading = ref(true)
 const getItemLocalStorage = async () => {
+  dir.value = await profileStore.Rtl()
   getItem.value = await JSON.parse(profileStore.getItems())
   locale.value = getItem.value[0].locale
   theme.value = getItem.value[0].theme

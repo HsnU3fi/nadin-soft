@@ -1,5 +1,5 @@
 <template>
-  <v-app  :theme="theme">
+  <v-app   :theme="theme" >
     <side-bar v-if="showAppBar"/>
     <v-main>
       <router-view/>
@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+
 import SideBar from "@/components/sideBar/SideBar.vue";
 import {useProfileStore} from "./stores/profile";
 const profileStore = useProfileStore();
@@ -21,7 +22,6 @@ const theme = ref('light');
 const showAppBar = ref(true);
 const getTheme=JSON.parse(profileStore.getItems())
 theme.value=getTheme[0].theme
-
 router.beforeEach((to, from, next) => {
 
   if (to.path === '/') {

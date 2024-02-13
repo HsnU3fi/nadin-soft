@@ -20,5 +20,17 @@
   },
   "weather": {
     "city": "Enter City"
+    },
+  "todo": {
+    "editItem": "Edit Item",
+    "newItem": "New Item",
+    "formTitle": "New Item",
+    "todoList": "Todo List",
+    "todo": "todo ",
+    "todoCancel": "Cancel",
+    "todoSave": "Save",
+    "textDelete": "Are you sure you want to delete this item?",
+    "headerActions": "Actions",
+    "headerTodo": "Todo"
     }
 }

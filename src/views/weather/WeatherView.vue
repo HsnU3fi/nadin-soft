@@ -6,7 +6,6 @@
           width="70%"
           height="600"
           elevation="15"
-          color="#000"
           variant="outlined"
       >
         <v-row justify="center">
